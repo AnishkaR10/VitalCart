@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Document Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.1.1/tesseract.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    
+</head>
+<body>
+    
+    <div class="container">
+        <div class="header">
+            <h1>🏥 Medical Document Analyzer</h1>
+            <p>Upload your prescription or nutrient deficiency report for personalized health insights</p>
+        </div>
+        
+        <div class="upload-section" id="uploadSection">
+            <div>
+                <svg class="icon" style="width: 48px; height: 48px; margin-bottom: 15px;" viewBox="0 0 24 24">
+                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                </svg>
+                <p style="margin-bottom: 15px; color: #666;">Drag and drop your medical document here or click to browse</p>
+                <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                    Choose File
+                </button>
+                <input type="file" id="fileInput" class="file-input" accept=".pdf,.jpg,.jpeg,.png,.gif,.bmp">
+                <p style="margin-top: 10px; color: #999; font-size: 0.9em;">Supports PDF, JPG, PNG, GIF, BMP</p>
+            </div>
+        </div>
+        
+        <div class="progress-section" id="progressSection">
+            <div class="loading" id="statusText">Processing document...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+        
+        
+        <div class="results" id="results">
+            <div class="result-section" id="nutrientSection">
+                <h2 class="section-title">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z"/>
+                    </svg>
+                    Nutrient Deficiencies Detected
+                </h2>
+                <div id="nutrientResults"></div>
+            </div>
+            <div class="result-section" id="illnessSection">
+    <h2 class="section-title">
+        <svg class="icon" viewBox="0 0 24 24">
+            <path d="M11,2V22C5.9,21.5 2,17.2 2,12S5.9,2.5 11,2M13,2C18.1,2.5 22,6.8 22,12S18.1,21.5 13,22V2Z"/>
+        </svg>
+        Related Health Conditions
+    </h2>
+    <div id="illnessResults"></div>
+</div>
+            
+            <div class="result-section" id="grocerySection">
+                <h2 class="section-title">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M17,18C17.56,18 18,18.44 18,19C18,19.56 17.56,20 17,20C16.44,20 16,19.56 16,19C16,18.44 16.44,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15C5,16.1 5.9,17 7,17H19V15H7.42C7.28,15 7.17,14.89 7.17,14.75L7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5H5.21L4.27,3H1M7,18C7.56,18 8,18.44 8,19C8,19.56 7.56,20 7,20C6.44,20 6,19.56 6,19C6,18.44 6.44,18 7,18Z"/>
+                    </svg>
+                    VitalBasket
+                </h2>
+                <div class="grocery-cart-trigger" id="groceryCartTrigger">
+    <img src="shopping-cart.png" alt="Open Grocery Cart" class="big-cart-icon" />
+<p class="cart-label">Click to Discover Your Custom Nutrition Picks</p>
+
+</div>
+<div class="grocery-slider" id="grocerySlider">
+    <div class="grocery-slider-content">
+        <span class="close-slider" id="closeGrocerySlider">&times;</span>
+        <div class="grocery-list" id="groceryResults"></div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
